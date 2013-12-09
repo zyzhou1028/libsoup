@@ -81,6 +81,7 @@ soup_sources = [
   'soup-session.c',
   'soup-session-async.c',
   'soup-session-feature.c',
+  'soup-session-host.c',
   'soup-session-sync.c',
   'soup-socket.c',
   'soup-socket-properties.c',
