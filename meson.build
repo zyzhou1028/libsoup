@@ -1,8 +1,12 @@
 project('libsoup', 'c',
-        version: '2.70.0',
-        meson_version : '>=0.50',
-        license : 'LGPL2',
-        default_options : 'c_std=c89')
+  version: '2.70.0',
+  meson_version : '>=0.50',
+  license : 'LGPL2',
+  default_options : [
+    'warning_level=1',
+    'c_std=c99',
+  ]
+)
 
 gnome = import('gnome')
 
@@ -57,11 +61,9 @@ if cc.get_id() == 'msvc'
   add_project_arguments(cc.get_supported_arguments(['/utf-8']), language: 'c')
 else
   test_cflags = [
-      '-Wall',
       '-Wmissing-include-dirs',
       '-Wpointer-arith',
       '-Winit-self',
-      '-Wdeclaration-after-statement',
       '-Werror=missing-prototypes',
       '-Werror=implicit-function-declaration',
       '-Werror=aggregate-return',
