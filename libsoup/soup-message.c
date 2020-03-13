@@ -2167,11 +2167,6 @@ soup_message_get_soup_request (SoupMessage *msg)
  * message with lower priority (messages with the same priority are
  * processed on a FIFO basis).
  *
- * Setting priorities does not currently work with #SoupSessionSync
- * (or with synchronous messages on a plain #SoupSession) because in
- * the synchronous/blocking case, priority ends up being determined
- * semi-randomly by thread scheduling.
- *
  * Since: 2.44
  */
 void
