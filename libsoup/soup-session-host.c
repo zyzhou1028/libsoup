@@ -169,7 +169,7 @@ connection_disconnected (SoupConnection *conn, gpointer host)
 
 	if (priv->num_conns == 0) {
 		g_assert (priv->keep_alive_src == NULL);
-		priv->keep_alive_src = soup_add_timeout_reffed (soup_session_get_async_context (priv->session),
+		priv->keep_alive_src = soup_add_timeout_reffed (g_main_context_get_thread_default (),
 								HOST_KEEP_ALIVE,
 								emit_unused,
 								host);
