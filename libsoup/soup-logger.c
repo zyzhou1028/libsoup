@@ -627,9 +627,9 @@ print_response (SoupLogger *logger, SoupMessage *msg)
 		return;
 
 	soup_logger_print (logger, SOUP_LOGGER_LOG_MINIMAL, '<',
-			   "HTTP/1.%d %u %s\n",
-			   soup_message_get_http_version (msg),
-			   msg->status_code, msg->reason_phrase);
+			   "%s %u %s\n",
+			   soup_http_version_to_string (soup_message_get_http_version (msg)),
+			   msg->status_code, msg->reason_phrase ? msg->reason_phrase : "");
 
 	soup_logger_print (logger, SOUP_LOGGER_LOG_MINIMAL, '<',
 			   "Soup-Debug-Timestamp: %lu",
