@@ -992,8 +992,7 @@ soup_session_send_queue_item (SoupSession *session,
 					     "Connection", "Keep-Alive");
 	}
 
-	g_signal_emit (session, signals[REQUEST_STARTED], 0,
-		       item->msg, soup_connection_get_socket (item->conn));
+	g_signal_emit (session, signals[REQUEST_STARTED], 0, item->msg);
 	soup_message_starting (item->msg);
 	if (item->state == SOUP_MESSAGE_RUNNING)
 		soup_connection_send_request (item->conn, item, completion_cb, item);
@@ -2439,7 +2438,6 @@ soup_session_class_init (SoupSessionClass *session_class)
 	 * SoupSession::request-started:
 	 * @session: the session
 	 * @msg: the request being sent
-	 * @socket: the socket the request is being sent on
 	 *
 	 * Emitted just before a request is sent. See
 	 * #SoupSession::request_queued for a detailed description of
@@ -2454,9 +2452,8 @@ soup_session_class_init (SoupSessionClass *session_class)
 			      0,
 			      NULL, NULL,
 			      NULL,
-			      G_TYPE_NONE, 2,
-			      SOUP_TYPE_MESSAGE,
-			      SOUP_TYPE_SOCKET);
+			      G_TYPE_NONE, 1,
+			      SOUP_TYPE_MESSAGE);
 
 	/**
 	 * SoupSession::request-unqueued:
