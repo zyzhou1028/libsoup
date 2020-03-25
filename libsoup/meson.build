@@ -48,7 +48,6 @@ soup_sources = [
 
   'xmlrpc/soup-xmlrpc.c',
 
-  'soup-address.c',
   'soup-body-input-stream.c',
   'soup-body-output-stream.c',
   'soup-client-input-stream.c',
@@ -158,7 +157,6 @@ soup_introspection_headers = [
 
   'xmlrpc/soup-xmlrpc.h',
 
-  'soup-address.h',
   'soup-autocleanups.h',
 
   'soup-date.h',

@@ -24,8 +24,8 @@ struct _SoupSessionHost
 typedef struct {
 	GMutex       mutex;
 
-	SoupURI     *uri;
-	SoupAddress *addr;
+	SoupURI         *uri;
+	GNetworkAddress *addr;
 
 	GSList      *connections;      /* CONTAINS: SoupConnection */
 	guint        num_conns;
@@ -105,10 +105,10 @@ soup_session_host_new (SoupSession *session,
 	priv = soup_session_host_get_instance_private (host);
 
 	priv->uri = soup_uri_copy_host (uri);
-	priv->addr = g_object_new (SOUP_TYPE_ADDRESS,
-				   SOUP_ADDRESS_NAME, priv->uri->host,
-				   SOUP_ADDRESS_PORT, priv->uri->port,
-				   SOUP_ADDRESS_PROTOCOL, priv->uri->scheme,
+	priv->addr = g_object_new (G_TYPE_NETWORK_ADDRESS,
+				   "hostname", priv->uri->host,
+				   "port", priv->uri->port,
+				   "scheme", priv->uri->scheme,
 				   NULL);
 	priv->keep_alive_src = NULL;
 	priv->session = session;
@@ -127,7 +127,7 @@ soup_session_host_get_uri (SoupSessionHost *host)
 	return priv->uri;
 }
 
-SoupAddress *
+GNetworkAddress *
 soup_session_host_get_address (SoupSessionHost *host)
 {
 	SoupSessionHostPrivate *priv = soup_session_host_get_instance_private (host);

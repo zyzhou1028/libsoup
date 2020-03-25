@@ -18,7 +18,7 @@ SoupSessionHost *soup_session_host_new                 (SoupSession          *se
 							SoupURI              *uri);
 
 SoupURI         *soup_session_host_get_uri             (SoupSessionHost      *host);
-SoupAddress     *soup_session_host_get_address         (SoupSessionHost      *host);
+GNetworkAddress *soup_session_host_get_address         (SoupSessionHost      *host);
 
 void             soup_session_host_add_message         (SoupSessionHost      *host,
 							SoupMessage          *msg);

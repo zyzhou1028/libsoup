@@ -52,7 +52,7 @@ gboolean   soup_socket_listen_full             (SoupSocket           *sock,
 
 typedef struct {
 	GProxyResolver *proxy_resolver;
-	SoupAddress *local_addr;
+	GInetSocketAddress *local_addr;
 
 	GTlsDatabase *tlsdb;
 	GTlsInteraction *tls_interaction;
@@ -69,7 +69,7 @@ GType soup_socket_properties_get_type (void);
 #define SOUP_TYPE_SOCKET_PROPERTIES (soup_socket_properties_get_type ())
 
 SoupSocketProperties *soup_socket_properties_new   (GProxyResolver  *proxy_resolver,
-						    SoupAddress     *local_addr,
+			                            GInetSocketAddress *local_addr,
 						    GTlsDatabase    *tlsdb,
 						    GTlsInteraction *tls_interaction,
 						    gboolean         ssl_strict,
