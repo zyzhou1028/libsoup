@@ -14,6 +14,7 @@
 #include "soup-session.h"
 #include "soup.h"
 #include "auth/soup-auth-manager.h"
+#include "auth/soup-auth-ntlm.h"
 #include "cache/soup-cache-private.h"
 #include "soup-connection.h"
 #include "soup-message-private.h"
