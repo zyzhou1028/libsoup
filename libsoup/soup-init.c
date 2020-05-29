@@ -19,6 +19,8 @@
 HMODULE soup_dll;
 #endif
 
+#include <locale.h>
+
 static void
 soup_init (void)
 {
